@@ -88,7 +88,9 @@ async function headStep(label, summon, selector) {
 				await rcon('tp Tester 18.5 -60 20.5 -90 0');
 				await sleep(1500);
 				const target = (await tester.entities('player'))[0];
-				await rcon('damage BedrockBot 19 minecraft:generic');
+				// Leave the Bedrock player on one health, so the Java player's hit is the kill.
+				const health = Number(((await rcon('data get entity BedrockBot Health')).match(/([\d.]+)f/) || [0, '20'])[1]);
+				if (health > 1) await rcon(`damage BedrockBot ${health - 1} minecraft:generic`);
 				await sleep(700);
 				if (target) await tester.send(`attack ${target.id}`);
 				await sleep(1200);

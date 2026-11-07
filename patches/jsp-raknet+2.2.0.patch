@@ -20,10 +20,23 @@ index ecac320..8f89574 100644
          packet.encode();
          return packet.buffer;
 diff --git a/node_modules/jsp-raknet/js/Connection.js b/node_modules/jsp-raknet/js/Connection.js
-index 24fd15b..3291f1f 100644
+index 24fd15b..01adc29 100644
 --- a/node_modules/jsp-raknet/js/Connection.js
 +++ b/node_modules/jsp-raknet/js/Connection.js
-@@ -36,8 +36,8 @@ class Connection {
+@@ -26,6 +26,12 @@ var Priority;
+     Priority[Priority["Immediate"] = 1] = "Immediate";
+ })(Priority || (Priority = {}));
+ const CONNECTION_TIMEOUT = 10000;
++// Patched: keeps the last 65536 values, enough to recognise any resend.
++function remember(set, value) {
++    set.add(value);
++    if (set.size > 65536)
++        set.delete(set.values().next().value);
++}
+ class Connection {
+     constructor(listener, mtuSize, address) {
+         this.state = 0 /* Connecting */;
+@@ -36,8 +42,13 @@ class Connection {
          this.recvQueue = [];
          this.splitPackets = new Map();
          this.recoveryList = new Map();
@@ -31,9 +44,112 @@ index 24fd15b..3291f1f 100644
 -        this.reliableReceiveWindow = new SlidingOrderedWindow(256);
 +        this.receiveWindow = new SlidingReceiveWindow(8192); // Patched: 256 drops packets in big bursts.
 +        this.reliableReceiveWindow = new SlidingOrderedWindow(8192);
++        // Patched: datagrams and reliable messages already read, and ordered packets waiting for their turn.
++        this.seenDatagrams = new Set();
++        this.seenMessages = new Set();
++        this.orderQueues = [];
++        this.orderReadIndex = [];
          // TODO: ReliableOrdered channels
          this.channelIndex = [];
          this.lastUpdate = Date.now();
+@@ -64,7 +75,7 @@ class Connection {
+             return;
+         }
+         if (this.recvQueue.length) {
+-            const messages = this.recvQueue.splice(0, 4);
++            const messages = this.recvQueue.splice(0, this.recvQueue.length); // Patched: 4 a tick lags behind Geyser's bursts.
+             for (const message of messages) {
+                 this.receiveOnline(message);
+             }
+@@ -161,40 +172,47 @@ class Connection {
+     handleDatagram(buffer) {
+         const dataPacket = DataPacket_1.DataPacket.from(buffer);
+         console.assert(dataPacket.sequenceNumber != null, 'Packet sequence number cannot be null');
+-        // this.inLog('Reading datagram', buffer, dataPacket)
+         this.ackQueue.push(dataPacket.sequenceNumber);
+-        this.receiveWindow.set(dataPacket.sequenceNumber, dataPacket);
+-        const [missing, have] = this.receiveWindow.read();
+-        // this.inLog('Reading', missing, have)
+-        for (const miss of missing) {
+-            if (!this.nacking.has(miss))
+-                this.nackQueue.add(miss);
+-        }
+-        if (this.nackQueue.size)
+-            this.inLog('NACKs while reading datagram', this.nackQueue, this.nacking);
+-        for (const datagram of have) {
+-            if (this.nacking.has(datagram.sequenceNumber) || this.nackQueue.has(datagram.sequenceNumber)) {
+-                this.inLog('Recieved lost #', datagram.sequenceNumber);
+-                this.nacking.delete(datagram.sequenceNumber);
+-                this.nackQueue.delete(datagram.sequenceNumber);
+-            }
+-            for (const packet of datagram.packets) {
+-                this.recievePacket(packet);
+-            }
++        // Patched: Geyser resends lost packets in new datagrams with new sequence numbers, so a missing sequence number
++        // never fills. Datagrams are read once each as they arrive, and only the packets inside them are ordered.
++        if (this.seenDatagrams.has(dataPacket.sequenceNumber))
++            return;
++        remember(this.seenDatagrams, dataPacket.sequenceNumber);
++        for (const packet of dataPacket.packets) {
++            this.recievePacket(packet);
+         }
+     }
+     recievePacket(packet) {
+-        // this.inLog('-> Encapsulated', packet, packet.isReliable())
++        // Patched: a reliable packet that arrives again in a resend is dropped.
+         if (packet.isReliable()) {
+-            this.reliableReceiveWindow.set(packet.messageIndex, packet);
+-            const readable = this.reliableReceiveWindow.read((lost) => debug('Lost ordered', lost, 'currently at', packet.messageIndex));
+-            this.inLog('Reading reliable', readable);
+-            for (const pak of readable) {
+-                this.handlePacket(pak);
+-            }
++            if (this.seenMessages.has(packet.messageIndex))
++                return;
++            remember(this.seenMessages, packet.messageIndex);
+         }
+-        else {
++        if (packet.split) {
++            this.handleSplit(packet);
++            return;
++        }
++        this.orderPacket(packet);
++    }
++    // Patched: ordered packets are handled by order index, as RakNet does. Geyser can send them in a different order,
++    // and encrypted game packets must be read in the order they were written.
++    orderPacket(packet) {
++        if (packet.reliability !== reliability_1.default.ReliableOrdered) {
+             this.handlePacket(packet);
++            return;
++        }
++        const channel = packet.orderChannel;
++        const queue = this.orderQueues[channel] || (this.orderQueues[channel] = new Map());
++        let next = this.orderReadIndex[channel] || 0;
++        if (packet.orderIndex < next)
++            return;
++        queue.set(packet.orderIndex, packet);
++        while (queue.has(next)) {
++            const ready = queue.get(next);
++            queue.delete(next);
++            this.orderReadIndex[channel] = ++next;
++            this.handlePacket(ready);
+         }
+     }
+     handleSplit(packet) {
+@@ -210,8 +228,12 @@ class Connection {
+             }
+             const encapsulated = new EncapsulatedPacket_1.default();
+             encapsulated.buffer = Buffer.concat(bufs);
++            // Patched: the whole packet takes its fragments' place in the order.
++            encapsulated.reliability = packet.reliability;
++            encapsulated.orderIndex = packet.orderIndex;
++            encapsulated.orderChannel = packet.orderChannel;
+             this.splitPackets.delete(packet.splitID);
+-            this.handlePacket(encapsulated);
++            this.orderPacket(encapsulated);
+         }
+         else {
+             // debug('Waiting for split', packet.messageIndex, packet.splitID, packet.splitIndex, '/' , packet.splitCount)
 diff --git a/node_modules/jsp-raknet/js/SlidingWindow.js b/node_modules/jsp-raknet/js/SlidingWindow.js
 index 309c5ff..51bfa65 100644
 --- a/node_modules/jsp-raknet/js/SlidingWindow.js

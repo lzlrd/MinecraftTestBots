@@ -10,8 +10,8 @@ Scripted clients for testing plugins and datapacks on a local Paper or Leaf 26.3
 | `lib/common.js` | RCON and the `PASS`/`FAIL` bookkeeping |
 | `lib/config.js` | Server address, ports and RCON password |
 | `tests/java/` | Furniture, Looting, Player Drops Head, the mob head converter, Jodek's smaller packs, MoreBosses, and joining with every advancement |
-| `tests/bedrock/` | Mob heads, player heads, skins and the Totem Shield as Bedrock players see them, and joining |
-| `patches/` | Fixes that let jsp-raknet join Geyser |
+| `tests/bedrock/` | Mob heads, player heads, skins, the Totem Shield and From the Fog as Bedrock players see them, and joining |
+| `patches/` | Fixes that let jsp-raknet join Geyser and keep up with it |
 
 ## Set up
 
@@ -19,11 +19,14 @@ Scripted clients for testing plugins and datapacks on a local Paper or Leaf 26.3
 
    ```properties
    online-mode=false
+   allow-flight=true
    server-port=25566
    enable-rcon=true
    rcon.port=25576
    rcon.password=testpass
    ```
+
+   The bots don't fall, so `allow-flight` stops Paper kicking them for floating. Turn off mob spawning too (`/gamerule spawn_mobs false` and `/gamerule spawn_monsters false`): slimes and creepers kill the bots mid-test.
 
 2. For the Bedrock tests, add Geyser with `transport: raknet`, `auth-type: offline` and `validate-bedrock-login: false`. Use these only on a test server.
 3. Build the Java client with JDK 25:
@@ -60,9 +63,10 @@ node tests/bedrock/heads.js cow fish
 | `bedrock/heads.js` | Mob Heads, Player Drops Head, a skull mapping in `SERVER_DIR` | steps: `join`, `cow`, `fish`, `pvp`, `player-head` (default all) |
 | `bedrock/skin.js` | | a skin hash |
 | `bedrock/totem_shield.js` | Totem Shield, its Geyser mapping and pack | |
+| `bedrock/from_the_fog.js` | From the Fog, and from GeyserPacks its Bedrock pack and the merged locale overrides | |
 | `bedrock/join.js`, `bedrock/grant_advancements.js` | | |
 
-The JavaScript RakNet client sometimes breaks during Geyser's join burst. The Bedrock helpers retry with a fresh session, so lines such as `session 2 broke: Checksum mismatch` are expected.
+Unpatched, jsp-raknet loses step with Geyser under load and the session dies with `Checksum mismatch`: Geyser resends lost packets in new datagrams with new sequence numbers and can send ordered packets out of order, and the client read only four datagrams a tick. The patch reads datagrams as they arrive, drops repeats and hands packets on by order index, as RakNet does. The Bedrock helpers still retry a session that breaks.
 
 Settings come from the environment:
 
