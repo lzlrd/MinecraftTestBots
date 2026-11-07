@@ -10,7 +10,7 @@ Scripted clients for testing plugins and datapacks on a local Paper or Leaf 26.3
 | `lib/common.js` | RCON and the `PASS`/`FAIL` bookkeeping |
 | `lib/config.js` | Server address, ports and RCON password |
 | `tests/java/` | Furniture, Looting, Player Drops Head, the mob head converter, Jodek's smaller packs, MoreBosses, DatapackCompat, and joining with every advancement |
-| `tests/bedrock/` | Mob heads, player heads, skins, the Totem Shield, From the Fog and Dungeons and Taverns as Bedrock players see them, and joining |
+| `tests/bedrock/` | Mob heads, player heads, skins, the Totem Shield, furniture, From the Fog and Dungeons and Taverns as Bedrock players see them, and joining |
 | `patches/` | Fixes that let jsp-raknet join Geyser and keep up with it |
 
 ## Set up
@@ -52,7 +52,8 @@ node tests/bedrock/heads.js cow fish
 
 | Test | Needs | Arguments |
 | --- | --- | --- |
-| `java/furniture.js` | CutebearFurniture | `a` on 1.6, `b` on 1.7 |
+| `java/furniture.js` | CutebearFurniture | `a` on 1.6, `b` on 1.7 and `c` on 1.8, each on the world the stage before left |
+| `java/furniture_pfm.js` | CutebearFurniture 1.8 or later | |
 | `java/movement_control.js` | | |
 | `java/looting.js` | MobHeadsLooting, Mob Heads | cow kills with and without Looting III, default 150 each |
 | `java/player_drops_head.js` | Player Drops Head, MobHeadsLooting | `on` or `off`: whether PaperTweaks' player-head-drops module is on |
@@ -66,6 +67,7 @@ node tests/bedrock/heads.js cow fish
 | `bedrock/totem_shield.js` | Totem Shield, its Geyser mapping and pack | |
 | `bedrock/from_the_fog.js` | From the Fog, and from GeyserPacks its Bedrock pack and the merged locale overrides | |
 | `bedrock/dungeons_and_taverns.js` | Dungeons and Taverns, and the merged locale overrides from GeyserPacks | |
+| `bedrock/furniture.js` | CutebearFurniture, and FurnitureResource's `cutebear_furniture.mcpack` and `cutebear_furniture.json` in Geyser's `packs` and `custom_mappings` | |
 | `bedrock/join.js`, `bedrock/grant_advancements.js` | | |
 
 Unpatched, jsp-raknet loses step with Geyser under load and the session dies with `Checksum mismatch`: Geyser resends lost packets in new datagrams with new sequence numbers and can send ordered packets out of order, and the client read only four datagrams a tick. The patch reads datagrams as they arrive, drops repeats and hands packets on by order index, as RakNet does. The Bedrock helpers still retry a session that breaks.
