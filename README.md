@@ -10,7 +10,7 @@ Scripted clients for testing plugins and datapacks on a local Paper or Leaf 26.3
 | `lib/common.js` | RCON and the `PASS`/`FAIL` bookkeeping |
 | `lib/config.js` | Server address, ports and RCON password |
 | `tests/java/` | Furniture, Looting, Player Drops Head, the mob head converter, Jodek's smaller packs, MoreBosses, and joining with every advancement |
-| `tests/bedrock/` | Mob heads, player heads, skins, the Totem Shield and From the Fog as Bedrock players see them, and joining |
+| `tests/bedrock/` | Mob heads, player heads, skins, the Totem Shield, From the Fog and Dungeons and Taverns as Bedrock players see them, and joining |
 | `patches/` | Fixes that let jsp-raknet join Geyser and keep up with it |
 
 ## Set up
@@ -64,6 +64,7 @@ node tests/bedrock/heads.js cow fish
 | `bedrock/skin.js` | | a skin hash |
 | `bedrock/totem_shield.js` | Totem Shield, its Geyser mapping and pack | |
 | `bedrock/from_the_fog.js` | From the Fog, and from GeyserPacks its Bedrock pack and the merged locale overrides | |
+| `bedrock/dungeons_and_taverns.js` | Dungeons and Taverns, and the merged locale overrides from GeyserPacks | |
 | `bedrock/join.js`, `bedrock/grant_advancements.js` | | |
 
 Unpatched, jsp-raknet loses step with Geyser under load and the session dies with `Checksum mismatch`: Geyser resends lost packets in new datagrams with new sequence numbers and can send ordered packets out of order, and the client read only four datagrams a tick. The patch reads datagrams as they arrive, drops repeats and hands packets on by order index, as RakNet does. The Bedrock helpers still retry a session that breaks.
