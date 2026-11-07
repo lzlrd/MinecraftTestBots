@@ -1,0 +1,26 @@
+plugins {
+	id 'java'
+	id 'application'
+}
+
+repositories {
+	maven { url = 'https://repo.opencollab.dev/main/' }
+	maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.geysermc.mcprotocollib:protocol:26.3-3'
+}
+
+java {
+	toolchain.languageVersion = JavaLanguageVersion.of(25)
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+}
+
+application {
+	mainClass = 'client.TestClient'
+}

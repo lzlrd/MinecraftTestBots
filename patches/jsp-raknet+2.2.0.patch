@@ -1,0 +1,83 @@
+diff --git a/node_modules/jsp-raknet/js/Client.js b/node_modules/jsp-raknet/js/Client.js
+index ecac320..8f89574 100644
+--- a/node_modules/jsp-raknet/js/Client.js
++++ b/node_modules/jsp-raknet/js/Client.js
+@@ -18,7 +18,7 @@ const OpenConnectionReply2_1 = __importDefault(require("./protocol/OpenConnectio
+ const Identifiers_1 = __importDefault(require("./protocol/Identifiers"));
+ const debug = require('debug')('raknet');
+ // RakNet protocol versions 
+-const RAKNET_PROTOCOL = 10;
++const RAKNET_PROTOCOL = 11; // Patched: Geyser only accepts RakNet 11.
+ const RAKNET_TPS = 100;
+ const RAKNET_TICK_LENGTH = 1 / RAKNET_TPS;
+ // Constantly reconnect with smaller MTU
+@@ -131,6 +131,7 @@ class Client extends events_1.default {
+         packet.mtuSize = Math.min(decodedPacket.mtuSize, 1400);
+         packet.clientGUID = this.id;
+         packet.serverAddress = this.address;
++        if (decodedPacket.serverHasSecurity) packet.cookie = decodedPacket.cookie;
+         // debug('MTU', decodedPacket, packet.mtuSize, packet.clientGUID, packet.serverAddress.address)
+         packet.encode();
+         return packet.buffer;
+diff --git a/node_modules/jsp-raknet/js/Connection.js b/node_modules/jsp-raknet/js/Connection.js
+index 24fd15b..3291f1f 100644
+--- a/node_modules/jsp-raknet/js/Connection.js
++++ b/node_modules/jsp-raknet/js/Connection.js
+@@ -36,8 +36,8 @@ class Connection {
+         this.recvQueue = [];
+         this.splitPackets = new Map();
+         this.recoveryList = new Map();
+-        this.receiveWindow = new SlidingReceiveWindow(256);
+-        this.reliableReceiveWindow = new SlidingOrderedWindow(256);
++        this.receiveWindow = new SlidingReceiveWindow(8192); // Patched: 256 drops packets in big bursts.
++        this.reliableReceiveWindow = new SlidingOrderedWindow(8192);
+         // TODO: ReliableOrdered channels
+         this.channelIndex = [];
+         this.lastUpdate = Date.now();
+diff --git a/node_modules/jsp-raknet/js/SlidingWindow.js b/node_modules/jsp-raknet/js/SlidingWindow.js
+index 309c5ff..51bfa65 100644
+--- a/node_modules/jsp-raknet/js/SlidingWindow.js
++++ b/node_modules/jsp-raknet/js/SlidingWindow.js
+@@ -9,8 +9,11 @@ class SlidingReceiveWindow {
+         if (entryIndex < this.windowStart || entryIndex > this.windowEnd) {
+             return;
+         }
+-        this.newest = Math.max(this.newest, entryIndex);
+         const offset = entryIndex - this.windowStart;
++        // Patched: a resent datagram must not be read a second time.
++        if (this.window[offset] === true)
++            return;
++        this.newest = Math.max(this.newest, entryIndex);
+         this.window[offset] = data;
+     }
+     get(entryIndex) {
+diff --git a/node_modules/jsp-raknet/js/protocol/OpenConnectionReply1.js b/node_modules/jsp-raknet/js/protocol/OpenConnectionReply1.js
+index d870d95..046be26 100644
+--- a/node_modules/jsp-raknet/js/protocol/OpenConnectionReply1.js
++++ b/node_modules/jsp-raknet/js/protocol/OpenConnectionReply1.js
+@@ -13,7 +13,9 @@ class OpenConnectionReply1 extends OfflinePacket_1.default {
+         super.decode();
+         this.readMagic();
+         this.serverGUID = this.readLong();
+-        this.readByte(); // Secure
++        // Patched: RakNet 11 servers (Geyser) can send a cookie the client must echo.
++        this.serverHasSecurity = this.readByte() !== 0;
++        if (this.serverHasSecurity) this.cookie = this.readInt();
+         this.mtuSize = this.readShort();
+     }
+     encode() {
+diff --git a/node_modules/jsp-raknet/js/protocol/OpenConnectionRequest2.js b/node_modules/jsp-raknet/js/protocol/OpenConnectionRequest2.js
+index c90ea40..ce8b6a9 100644
+--- a/node_modules/jsp-raknet/js/protocol/OpenConnectionRequest2.js
++++ b/node_modules/jsp-raknet/js/protocol/OpenConnectionRequest2.js
+@@ -19,6 +19,10 @@ class OpenConnectionRequest2 extends OfflinePacket_1.default {
+     encode() {
+         super.encode();
+         this.writeMagic();
++        if (this.cookie !== undefined) {
++            this.writeInt(this.cookie);
++            this.writeByte(0); // Client wrote no challenge
++        }
+         this.writeAddress(this.serverAddress);
+         this.writeShort(this.mtuSize);
+         this.writeLong(this.clientGUID);

@@ -1,0 +1,14 @@
+{
+	"name": "minecraft-test-bots",
+	"private": true,
+	"description": "Scripted Java and Bedrock clients for testing plugins and datapacks on a local Paper or Leaf server.",
+	"license": "SEE LICENSE IN LICENSE.md",
+	"dependencies": {
+		"bedrock-protocol": "3.61.0",
+		"jsp-raknet": "2.2.0",
+		"rcon-client": "4.2.5"
+	},
+	"devDependencies": {
+		"patch-package": "8.0.1"
+	}
+}

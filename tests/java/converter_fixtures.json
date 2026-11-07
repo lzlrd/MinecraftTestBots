@@ -1,0 +1,165 @@
+[
+ {
+  "name": "Tabby Cat Head",
+  "hash": "de28d30db3f8c3fe50ca4f26f3075e36f003ae8028135a8cd692f24c9a98ae1b",
+  "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGUyOGQzMGRiM2Y4YzNmZTUwY2E0ZjI2ZjMwNzVlMzZmMDAzYWU4MDI4MTM1YThjZDY5MmYyNGM5YTk4YWUxYiJ9fX0=",
+  "sound": "minecraft:entity.cat.ambient",
+  "spec": "minecraft:player_head[minecraft:profile={properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGUyOGQzMGRiM2Y4YzNmZTUwY2E0ZjI2ZjMwNzVlMzZmMDAzYWU4MDI4MTM1YThjZDY5MmYyNGM5YTk4YWUxYiJ9fX0=\"}]},minecraft:item_name=\"Tabby Cat Head\",minecraft:note_block_sound=\"minecraft:entity.cat.ambient\"]",
+  "target": {
+   "table": "entities/cat/adult/tabby",
+   "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTIxMGZiMGRlYTUwNWQwNmUyNjM2Y2FkMDQ2YzZlMjdkOGU0OTk4YTc1MjllYjZhZGQyZjI5MTMwMjJkM2Q1OSJ9fX0=",
+   "sound": "minecraft:entity.cat.beg_for_food",
+   "rarity": "&cat",
+   "names": [
+    "{\"color\":\"white\",\"translate\":\"entity.minecraft.cat\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"yellow\",\"translate\":\"entity.minecraft.cat\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"aqua\",\"translate\":\"entity.minecraft.cat\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"dark_purple\",\"translate\":\"entity.minecraft.cat\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"gold\",\"translate\":\"entity.minecraft.cat\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"green\",\"translate\":\"entity.minecraft.cat\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}"
+   ]
+  },
+  "shared": false
+ },
+ {
+  "name": "Temperate Cow Head",
+  "hash": "d8fdc65e3ba09c12bc1d68fffb33d634305c014231b3d42a888e336ae490090f",
+  "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDhmZGM2NWUzYmEwOWMxMmJjMWQ2OGZmZmIzM2Q2MzQzMDVjMDE0MjMxYjNkNDJhODg4ZTMzNmFlNDkwMDkwZiJ9fX0=",
+  "sound": "minecraft:entity.cow.ambient",
+  "spec": "minecraft:player_head[minecraft:profile={properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDhmZGM2NWUzYmEwOWMxMmJjMWQ2OGZmZmIzM2Q2MzQzMDVjMDE0MjMxYjNkNDJhODg4ZTMzNmFlNDkwMDkwZiJ9fX0=\"}]},minecraft:item_name=\"Temperate Cow Head\",minecraft:note_block_sound=\"minecraft:entity.cow.ambient\"]",
+  "target": {
+   "table": "entities/cow/adult/temperate",
+   "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGM0YjVmNmQ3NTEyNjM4MGY1MjBhNjdjYTU3YmM5YTU2YWExMWRiOGFmZTdlNWRjYjJhNTJkZmNmZWFlMDc4NSJ9fX0=",
+   "sound": "minecraft:entity.cow.ambient",
+   "rarity": "&cow",
+   "names": [
+    "{\"color\":\"white\",\"translate\":\"entity.minecraft.cow\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"yellow\",\"translate\":\"entity.minecraft.cow\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"aqua\",\"translate\":\"entity.minecraft.cow\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"dark_purple\",\"translate\":\"entity.minecraft.cow\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"gold\",\"translate\":\"entity.minecraft.cow\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"green\",\"translate\":\"entity.minecraft.cow\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}"
+   ]
+  },
+  "shared": false
+ },
+ {
+  "name": "Charged Creeper Head",
+  "hash": "3511e4a3d5add6a54499abad10d799d06ce45cba9e520afd2008608a6288b7e7",
+  "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzUxMWU0YTNkNWFkZDZhNTQ0OTlhYmFkMTBkNzk5ZDA2Y2U0NWNiYTllNTIwYWZkMjAwODYwOGE2Mjg4YjdlNyJ9fX0=",
+  "sound": "minecraft:entity.generic.explode",
+  "spec": "minecraft:player_head[minecraft:profile={properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzUxMWU0YTNkNWFkZDZhNTQ0OTlhYmFkMTBkNzk5ZDA2Y2U0NWNiYTllNTIwYWZkMjAwODYwOGE2Mjg4YjdlNyJ9fX0=\"}]},minecraft:item_name=\"Charged Creeper Head\",minecraft:note_block_sound=\"minecraft:entity.generic.explode\"]",
+  "target": {
+   "table": "entities/creeper/charged",
+   "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjJjZWIzOWRkNGRlMjRhN2FkZmUyOTFhM2EwY2ZjN2NmNGY2NDVkZTU5YjYwM2ZjZmUwNmM2YjVhMDZlMjYifX19",
+   "sound": "minecraft:entity.creeper.hurt",
+   "rarity": "&creeper_charged",
+   "names": [
+    "{\"color\":\"white\",\"translate\":\"entity.minecraft.creeper\",\"italic\":false,\"extra\":[{\"text\":\" Head (Charged)\"}]}",
+    "{\"color\":\"yellow\",\"translate\":\"entity.minecraft.creeper\",\"italic\":false,\"extra\":[{\"text\":\" Head (Charged)\"}]}",
+    "{\"color\":\"aqua\",\"translate\":\"entity.minecraft.creeper\",\"italic\":false,\"extra\":[{\"text\":\" Head (Charged)\"}]}",
+    "{\"color\":\"dark_purple\",\"translate\":\"entity.minecraft.creeper\",\"italic\":false,\"extra\":[{\"text\":\" Head (Charged)\"}]}",
+    "{\"color\":\"gold\",\"translate\":\"entity.minecraft.creeper\",\"italic\":false,\"extra\":[{\"text\":\" Head (Charged)\"}]}",
+    "{\"color\":\"green\",\"translate\":\"entity.minecraft.creeper\",\"italic\":false,\"extra\":[{\"text\":\" Head (Charged)\"}]}"
+   ]
+  },
+  "shared": false
+ },
+ {
+  "name": "Warm Pig Head",
+  "hash": "7beba1a2d56e84f8e51fed6659f2cb7c14fed43859af584737897bf70c039475",
+  "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2JlYmExYTJkNTZlODRmOGU1MWZlZDY2NTlmMmNiN2MxNGZlZDQzODU5YWY1ODQ3Mzc4OTdiZjcwYzAzOTQ3NSJ9fX0=",
+  "sound": "minecraft:entity.pig.ambient",
+  "spec": "minecraft:player_head[minecraft:profile={properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2JlYmExYTJkNTZlODRmOGU1MWZlZDY2NTlmMmNiN2MxNGZlZDQzODU5YWY1ODQ3Mzc4OTdiZjcwYzAzOTQ3NSJ9fX0=\"}]},minecraft:item_name=\"Warm Pig Head\",minecraft:note_block_sound=\"minecraft:entity.pig.ambient\"]",
+  "target": {
+   "table": "entities/pig/adult/warm",
+   "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2JlYmExYTJkNTZlODRmOGU1MWZlZDY2NTlmMmNiN2MxNGZlZDQzODU5YWY1ODQ3Mzc4OTdiZjcwYzAzOTQ3NSJ9fX0=",
+   "sound": "minecraft:entity.pig.ambient",
+   "rarity": "&pig",
+   "names": [
+    "{\"color\":\"white\",\"translate\":\"entity.minecraft.pig\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"yellow\",\"translate\":\"entity.minecraft.pig\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"aqua\",\"translate\":\"entity.minecraft.pig\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"dark_purple\",\"translate\":\"entity.minecraft.pig\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"gold\",\"translate\":\"entity.minecraft.pig\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"green\",\"translate\":\"entity.minecraft.pig\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}"
+   ]
+  },
+  "shared": true
+ },
+ {
+  "name": "Mason Villager Head",
+  "hash": "ae0e9591e11aaef4c2c51d9ac69514e340485defcc2c12c38cd12386c2ec6b78",
+  "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0=",
+  "sound": "minecraft:entity.villager.ambient",
+  "spec": "minecraft:player_head[minecraft:profile={properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0=\"}]},minecraft:item_name=\"Mason Villager Head\",minecraft:note_block_sound=\"minecraft:entity.villager.ambient\"]",
+  "target": {
+   "table": "entities/villager/adult/plains/mason",
+   "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmMwMmMzZmZkNTcwNWFiNDg4YjMwNWQ1N2ZmMDE2OGUyNmRlNzBmZDNmNzM5ZTgzOTY2MWFiOTQ3ZGZmMzdiMSJ9fX0=",
+   "sound": "minecraft:entity.villager.ambient",
+   "rarity": "&villager",
+   "names": [
+    "{\"color\":\"white\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"yellow\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"aqua\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"dark_purple\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"gold\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"green\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}"
+   ]
+  },
+  "shared": true
+ },
+ {
+  "name": "Villager Head",
+  "hash": "ae0e9591e11aaef4c2c51d9ac69514e340485defcc2c12c38cd12386c2ec6b78",
+  "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0=",
+  "sound": "minecraft:entity.villager.ambient",
+  "spec": "minecraft:player_head[minecraft:profile={properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0=\"}]},minecraft:item_name=\"Villager Head\",minecraft:note_block_sound=\"minecraft:entity.villager.ambient\"]",
+  "target": {
+   "table": "entities/villager/adult/plains/normal",
+   "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUwZTk1OTFlMTFhYWVmNGMyYzUxZDlhYzY5NTE0ZTM0MDQ4NWRlZmNjMmMxMmMzOGNkMTIzODZjMmVjNmI3OCJ9fX0=",
+   "sound": "minecraft:entity.villager.ambient",
+   "rarity": "&villager",
+   "names": [
+    "{\"color\":\"white\",\"translate\":\"entity.minecraft.villager\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"yellow\",\"translate\":\"entity.minecraft.villager\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"aqua\",\"translate\":\"entity.minecraft.villager\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"dark_purple\",\"translate\":\"entity.minecraft.villager\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"gold\",\"translate\":\"entity.minecraft.villager\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"green\",\"translate\":\"entity.minecraft.villager\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}"
+   ]
+  },
+  "shared": true
+ },
+ {
+  "name": "Angry Ashen Wolf Head",
+  "hash": "7cbc3066d31c439035038fd6875d5dbeec3968c1b8006ffbfb5f674d76c89cde",
+  "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NiYzMwNjZkMzFjNDM5MDM1MDM4ZmQ2ODc1ZDVkYmVlYzM5NjhjMWI4MDA2ZmZiZmI1ZjY3NGQ3NmM4OWNkZSJ9fX0=",
+  "sound": "minecraft:entity.wolf.growl",
+  "spec": "minecraft:player_head[minecraft:profile={properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NiYzMwNjZkMzFjNDM5MDM1MDM4ZmQ2ODc1ZDVkYmVlYzM5NjhjMWI4MDA2ZmZiZmI1ZjY3NGQ3NmM4OWNkZSJ9fX0=\"}]},minecraft:item_name=\"Angry Ashen Wolf Head\",minecraft:note_block_sound=\"minecraft:entity.wolf.growl\"]",
+  "target": null,
+  "shared": false
+ },
+ {
+  "name": "Zombie Mason Head",
+  "hash": "fb552c90f212e855d12255d5cd62ed38b9cd7e30e73f0ea779d1764330e69264",
+  "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI1NTJjOTBmMjEyZTg1NWQxMjI1NWQ1Y2Q2MmVkMzhiOWNkN2UzMGU3M2YwZWE3NzlkMTc2NDMzMGU2OTI2NCJ9fX0=",
+  "sound": "minecraft:entity.zombie_villager.ambient",
+  "spec": "minecraft:player_head[minecraft:profile={properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI1NTJjOTBmMjEyZTg1NWQxMjI1NWQ1Y2Q2MmVkMzhiOWNkN2UzMGU3M2YwZWE3NzlkMTc2NDMzMGU2OTI2NCJ9fX0=\"}]},minecraft:item_name=\"Zombie Mason Head\",minecraft:note_block_sound=\"minecraft:entity.zombie_villager.ambient\"]",
+  "target": {
+   "table": "entities/zombie_villager/adult/plains/mason",
+   "textures": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTQ2ZDRmNTE5OGIxMjkyODg3NDM2ZjJjNmYzYWI1NTgzMzEzZTQxZTE2NDdhZjBmMmYzNDEyMTk2YzczOTVmNSJ9fX0=",
+   "sound": "minecraft:entity.zombie_villager.ambient",
+   "rarity": "&zombie_villager",
+   "names": [
+    "{\"color\":\"white\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"yellow\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"aqua\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"dark_purple\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"gold\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}",
+    "{\"color\":\"green\",\"translate\":\"entity.minecraft.villager.mason\",\"italic\":false,\"extra\":[{\"text\":\" \"},{\"translate\":\"mob_heads.head\",\"fallback\":\"Head\"}]}"
+   ]
+  },
+  "shared": false
+ }
+]
