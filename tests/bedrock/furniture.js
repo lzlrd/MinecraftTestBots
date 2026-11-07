@@ -16,6 +16,9 @@ const PIECES = {
 	simple_light: 'Simple Ceiling Light',
 	oak_red_simple_bed: 'Oak Red Simple Bed',
 	basic_red_oak_lamp: 'Basic Red Oak Lamp',
+	stripped_oak_chair: 'Stripped Oak Chair',
+	granite_kitchen_counter: 'Granite Kitchen Counter',
+	dark_concrete_kitchen_counter_oven: 'Dark Concrete Kitchen Oven',
 };
 const item = (id, name) => `minecraft:poisonous_potato[minecraft:item_model="cutebear_furniture:${id}",minecraft:custom_name="${name}",!minecraft:consumable]`;
 

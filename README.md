@@ -54,6 +54,7 @@ node tests/bedrock/heads.js cow fish
 | --- | --- | --- |
 | `java/furniture.js` | CutebearFurniture | `a` on 1.6, `b` on 1.7 and `c` on 1.8, each on the world the stage before left |
 | `java/furniture_pfm.js` | CutebearFurniture 1.8 or later | |
+| `java/furniture_materials.js` | CutebearFurniture 1.9 or later | |
 | `java/movement_control.js` | | |
 | `java/looting.js` | MobHeadsLooting, Mob Heads | cow kills with and without Looting III, default 150 each |
 | `java/player_drops_head.js` | Player Drops Head, MobHeadsLooting | `on` or `off`: whether PaperTweaks' player-head-drops module is on |
