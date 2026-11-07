@@ -9,7 +9,7 @@ Scripted clients for testing plugins and datapacks on a local Paper or Leaf 26.3
 | `lib/bedrock.js` | Bedrock players through Geyser with bedrock-protocol |
 | `lib/common.js` | RCON and the `PASS`/`FAIL` bookkeeping |
 | `lib/config.js` | Server address, ports and RCON password |
-| `tests/java/` | Furniture, Looting, Player Drops Head, the mob head converter, Jodek's smaller packs, MoreBosses, and joining with every advancement |
+| `tests/java/` | Furniture, Looting, Player Drops Head, the mob head converter, Jodek's smaller packs, MoreBosses, DatapackCompat, and joining with every advancement |
 | `tests/bedrock/` | Mob heads, player heads, skins, the Totem Shield, From the Fog and Dungeons and Taverns as Bedrock players see them, and joining |
 | `patches/` | Fixes that let jsp-raknet join Geyser and keep up with it |
 
@@ -59,6 +59,7 @@ node tests/bedrock/heads.js cow fish
 | `java/converter_setup.js`, `java/converter_verify.js` | Mob Heads | Run setup without MobHeadsConverter, restart with it, then verify |
 | `java/jodek_packs.js` | Totem Shield, Mineable Reinforced Deepslate, Sleep Anytime You Want, Sleep, Too Expensive Removed, Name Tag, Trident All Weather Channeling, Dragon Egg Respawns, Killer Bunny Name Tag, Mob Heads Powers | |
 | `java/morebosses.js` | MoreBosses, FastAsyncWorldEdit, `SpawnFrequency: 1` in MoreBosses' config | |
+| `java/datapack_compat.js` | Incendium, 5555ff lib, Mob Heads and [DatapackCompat](https://github.com/lzlrd/DatapackCompat) above them | |
 | `java/advancements.js`, `java/rejoin.js` | | `rejoin.js` takes a player name |
 | `bedrock/heads.js` | Mob Heads, Player Drops Head, a skull mapping in `SERVER_DIR` | steps: `join`, `cow`, `fish`, `pvp`, `player-head` (default all) |
 | `bedrock/skin.js` | | a skin hash |
