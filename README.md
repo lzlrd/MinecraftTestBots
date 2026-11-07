@@ -9,8 +9,8 @@ Scripted clients for testing plugins and datapacks on a local Paper or Leaf 26.3
 | `lib/bedrock.js` | Bedrock players through Geyser with bedrock-protocol |
 | `lib/common.js` | RCON and the `PASS`/`FAIL` bookkeeping |
 | `lib/config.js` | Server address, ports and RCON password |
-| `tests/java/` | Furniture, Looting, Player Drops Head, the mob head converter, and joining with every advancement |
-| `tests/bedrock/` | Mob heads, player heads and skins as Bedrock players see them, and joining |
+| `tests/java/` | Furniture, Looting, Player Drops Head, the mob head converter, Jodek's smaller packs, and joining with every advancement |
+| `tests/bedrock/` | Mob heads, player heads, skins and the Totem Shield as Bedrock players see them, and joining |
 | `patches/` | Fixes that let jsp-raknet join Geyser |
 
 ## Set up
@@ -54,9 +54,11 @@ node tests/bedrock/heads.js cow fish
 | `java/looting.js` | MobHeadsLooting, Mob Heads | cow kills with and without Looting III, default 150 each |
 | `java/player_drops_head.js` | Player Drops Head, MobHeadsLooting | `on` or `off`: whether PaperTweaks' player-head-drops module is on |
 | `java/converter_setup.js`, `java/converter_verify.js` | Mob Heads | Run setup without MobHeadsConverter, restart with it, then verify |
+| `java/jodek_packs.js` | Totem Shield, Mineable Reinforced Deepslate, Sleep Anytime You Want, Sleep, Too Expensive Removed, Name Tag, Trident All Weather Channeling, Dragon Egg Respawns, Killer Bunny Name Tag, Mob Heads Powers | |
 | `java/advancements.js`, `java/rejoin.js` | | `rejoin.js` takes a player name |
 | `bedrock/heads.js` | Mob Heads, Player Drops Head, a skull mapping in `SERVER_DIR` | steps: `join`, `cow`, `fish`, `pvp`, `player-head` (default all) |
 | `bedrock/skin.js` | | a skin hash |
+| `bedrock/totem_shield.js` | Totem Shield, its Geyser mapping and pack | |
 | `bedrock/join.js`, `bedrock/grant_advancements.js` | | |
 
 The JavaScript RakNet client sometimes breaks during Geyser's join burst. The Bedrock helpers retry with a fresh session, so lines such as `session 2 broke: Checksum mismatch` are expected.
