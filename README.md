@@ -64,7 +64,7 @@ node tests/bedrock/heads.js cow fish
 | `java/morebosses.js` | MoreBosses, FastAsyncWorldEdit, `SpawnFrequency: 1` in MoreBosses' config | |
 | `java/datapack_compat.js` | Incendium, 5555ff lib, Mob Heads and [DatapackCompat](https://github.com/lzlrd/DatapackCompat) above them | |
 | `java/advancements.js`, `java/rejoin.js` | | `rejoin.js` takes a player name |
-| `bedrock/heads.js` | Mob Heads, Player Drops Head, a skull mapping in `SERVER_DIR` | steps: `join`, `cow`, `fish`, `pvp`, `player-head` (default all) |
+| `bedrock/heads.js` | Mob Heads, Player Drops Head, [GeyserPlayerHeads](https://github.com/lzlrd/GeyserPlayerHeads) 1.1 with GeyserPacks' `skull-aliases.txt` in `SERVER_DIR` | steps: `join`, `cow`, `fish`, `placed`, `pvp`, `player-head` (default all) |
 | `bedrock/skin.js` | | a skin hash |
 | `bedrock/totem_shield.js` | Totem Shield, its Geyser mapping and pack | |
 | `bedrock/from_the_fog.js` | From the Fog, and from GeyserPacks its Bedrock pack and the merged locale overrides | |
