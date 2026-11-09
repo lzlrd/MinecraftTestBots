@@ -1,5 +1,6 @@
 // Checks the pieces CutebearFurniture 1.8 adds from Paladin's Furniture: their recipes, floor, wall and ceiling
 // placement, the yaw each gets, barriers only where a piece is solid, two-block beds, light from lamps, and seats.
+// Solidity and lamps are as 1.10 has them.
 const { rcon, isBlock, count, check, summary, close, sleep } = require('../../lib/common');
 const { Client } = require('../../lib/java');
 
@@ -94,9 +95,9 @@ async function sits(x, z = Z) {
 	await sleep(800);
 	check('breaking its top half removes the Xbox fridge and both barriers', (await count(display(18, -60))) === 0 && !(await barrier(18, -60)) && !(await barrier(18, -59)));
 
-	// A microwave sits on a counter, so it is not solid.
+	// A microwave is solid, so things can go on top of it.
 	await placeFloor('iron_microwave', 22);
-	check('microwave placed without a barrier', (await count(display(22, -60))) === 1 && !(await barrier(22, -60)));
+	check('microwave placed with a barrier', (await count(display(22, -60))) === 1 && (await barrier(22, -60)));
 
 	// Floor pieces need the top of a block and wall pieces the side of one.
 	await rcon(`setblock 26 -60 ${Z} minecraft:stone`);
@@ -157,10 +158,11 @@ async function sits(x, z = Z) {
 	check('office chair yaw is 90', (await yaw(20, -60, FAMILIES)) === 90, String(await yaw(20, -60, FAMILIES)));
 	check('right-clicking the office chair seats the player', await sits(20, FAMILIES));
 
-	// A floor lamp lights its block, so it is not solid.
+	// A floor lamp is solid and lights the block above it.
 	await placeFloor('basic_red_oak_lamp', 24, FAMILIES);
 	check('lamp placed', (await count(display(24, -60, FAMILIES))) === 1);
-	check('lamp gives light level 15', await isBlock(24, -60, FAMILIES, 'minecraft:light[level=15]'));
+	check('lamp is solid', await barrier(24, -60, FAMILIES));
+	check('lamp gives light level 15 above it', await isBlock(24, -59, FAMILIES, 'minecraft:light[level=15]'));
 
 	// A wall cabinet hangs on the side of a block, backed against it, and is solid.
 	await rcon(`setblock 30 -59 ${FAMILIES} minecraft:stone`);

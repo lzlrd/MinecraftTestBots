@@ -4,7 +4,7 @@ Scripted clients for testing plugins and datapacks on a local Paper or Leaf 26.3
 
 | Path | What it is |
 | --- | --- |
-| `java-client/` | Java Edition 26.3 client on MCProtocolLib. Takes `useon X Y Z FACE`, `dig X Y Z`, `attack ID`, `interact ID`, `slot N`, `move X Y Z`, `entities TYPE`, `vehicle` and `quit` on stdin, and prints `LOGIN`, `TELEPORT`, `DIED`, `RESPAWNED` and `DISCONNECTED` events |
+| `java-client/` | Java Edition 26.3 client on MCProtocolLib. Takes `useon X Y Z FACE`, `dig X Y Z`, `attack ID`, `interact ID`, `slot N`, `move X Y Z`, `entities TYPE`, `vehicle`, `sneak on\|off`, `leavebed`, `container`, `inv`, `shift SLOT`, `close` and `quit` on stdin, and prints `LOGIN`, `TELEPORT`, `DIED`, `RESPAWNED`, `OPENED`, `CLOSED` and `DISCONNECTED` events |
 | `lib/java.js` | Starts the Java client and waits for its events |
 | `lib/bedrock.js` | Bedrock players through Geyser with bedrock-protocol |
 | `lib/common.js` | RCON and the `PASS`/`FAIL` bookkeeping |
@@ -53,8 +53,9 @@ node tests/bedrock/heads.js cow fish
 | Test | Needs | Arguments |
 | --- | --- | --- |
 | `java/furniture.js` | CutebearFurniture | `a` on 1.6, `b` on 1.7 and `c` on 1.8, each on the world the stage before left |
-| `java/furniture_pfm.js` | CutebearFurniture 1.8 or later | |
+| `java/furniture_pfm.js` | CutebearFurniture 1.10 or later | |
 | `java/furniture_materials.js` | CutebearFurniture 1.9 or later | |
+| `java/furniture_use_setup.js`, `java/furniture_use.js` | CutebearFurniture, Floodgate | Run setup on 1.9, then the test on 1.10 with `RESTART_SCRIPT` set: it restarts the server twice, once by killing it |
 | `java/movement_control.js` | | |
 | `java/looting.js` | MobHeadsLooting, Mob Heads | cow kills with and without Looting III, default 150 each |
 | `java/player_drops_head.js` | Player Drops Head, MobHeadsLooting | `on` or `off`: whether PaperTweaks' player-head-drops module is on |
@@ -69,6 +70,7 @@ node tests/bedrock/heads.js cow fish
 | `bedrock/from_the_fog.js` | From the Fog, and from GeyserPacks its Bedrock pack and the merged locale overrides | |
 | `bedrock/dungeons_and_taverns.js` | Dungeons and Taverns, and the merged locale overrides from GeyserPacks | |
 | `bedrock/furniture.js` | CutebearFurniture, and FurnitureResource's `cutebear_furniture.mcpack` and `cutebear_furniture.json` in Geyser's `packs` and `custom_mappings` | |
+| `bedrock/furniture_ladder.js` | CutebearFurniture 1.10, Floodgate with an empty `username-prefix`, and `auth-type: floodgate` in Geyser; run after `java/furniture_use.js` | |
 | `bedrock/join.js`, `bedrock/grant_advancements.js` | | |
 
 Unpatched, jsp-raknet loses step with Geyser under load and the session dies with `Checksum mismatch`: Geyser resends lost packets in new datagrams with new sequence numbers and can send ordered packets out of order, and the client read only four datagrams a tick. The patch reads datagrams as they arrive, drops repeats and hands packets on by order index, as RakNet does. The Bedrock helpers still retry a session that breaks.
@@ -84,6 +86,8 @@ Settings come from the environment:
 | `RCON_PORT` | `25576` |
 | `RCON_PASSWORD` | `testpass` |
 | `SERVER_DIR` | `server/` in this repo |
+| `RESTART_SCRIPT` | none: a command that stops the server if it runs, starts it and returns once it's up, given a log file name |
+| `SERVER_JAR` | `leaf-26.3-9.jar`, the server jar's name, which tests that kill the server find it by |
 | `JAVA_HOME` | the `java` on your `PATH`, which must be 25 or later |
 
 ## Licence
